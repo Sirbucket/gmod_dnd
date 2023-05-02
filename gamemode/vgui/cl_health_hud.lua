@@ -39,7 +39,7 @@ local function Hud()
     draw_RoundedBox(4, x, y, w, h * 2, gray)
     DrawBarNoRadius(x + 8, y, (w * health_mod) - 8, h, colors, text_width, text_height, "Health: "..health, "DermaDefaultBold")
 
-	if PlayerMetaService.HasArmor(client) then
+	if client:HasArmor() then
 		x = x + (screen_width * 0.05)
 		y = y + (screen_height * 0.025)
 		w = w - (screen_width * 0.1)

@@ -2,11 +2,7 @@ local stored_x_vectors = {}
 local stored_y_vectors = {}
 local stored_z_vectors = {}
 
-if not VectorService then
-	VectorService = {}
-end
-
-function VectorService.XVector(amount)
+function XVector(amount)
 	if stored_x_vectors[amount] then
 		return stored_x_vectors[amount]
 	end
@@ -17,7 +13,7 @@ function VectorService.XVector(amount)
 	return vector
 end
 
-function VectorService.YVector(amount)
+function YVector(amount)
 	if stored_y_vectors[amount] then
 		return stored_y_vectors[amount]
 	end
@@ -28,7 +24,7 @@ function VectorService.YVector(amount)
 	return vector
 end
 
-function VectorService.ZVector(amount)
+function ZVector(amount)
 	if stored_z_vectors[amount] then
 		return stored_z_vectors[amount]
 	end

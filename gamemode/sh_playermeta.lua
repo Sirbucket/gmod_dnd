@@ -1,42 +1,28 @@
-if not PlayerMetaService then
-	PlayerMetaService = {}
-end
+local meta = FindMetaTable("player")
 
-function PlayerMetaService.HurtPlayer(player, attacker, inflictor, damage, type)
-	if not player then
-		error("no player in damage")
-	end
-	damage = math.floor(damage)
-
-	local pos = player:GetPos() + VectorService.ZVector(32)
-	local damageinfo = DamageInfo()
-	damageinfo:SetAttacker(attacker)
-	damageinfo:SetInflictor(inflictor)
-	damageinfo:SetDamageType(type or DMG_GENERIC)
-	damageinfo:SetDamagePosition(pos)
-	damageinfo:SetDamage(math.floor(damage))
-
-	player:TakeDamageInfo(damageinfo)
-end
-
-function PlayerMetaService.IsHurt(player, override)
+local function IsHurt(player, override)
 	override = override or 1
 	return player:Health() < player:GetMaxHealth() * override
 end
+meta.IsHurt = IsHurt
 
-function PlayerMetaService.IsArmorHurt(player, override)
+local function IsArmorHurt(player, override)
 	override = override or 1
 	return player:Armor() < player:GetMaxArmor() * override
 end
+meta.IsArmorHurt = IsArmorHurt
 
-function PlayerMetaService.HasArmor(player)
+local function HasArmor(player)
 	return player:Armor() > 0
 end
+meta.HasArmor = HasArmor
 
-function PlayerMetaService.IsPlayer(player)
+local function IsValidPlayer(player)
 	return player and player:IsValid() and player:IsPlayer()
 end
+meta.IsValidPlayer = IsValidPlayer
 
-function PlayerMetaService.IsLivingPlayer(player)
+local function IsLivingPlayer(player)
 	return player and PlayerMetaService.IsPlayer(player) and player:Alive()
 end
+meta.IsLivingPlayer = IsLivingPlayer
