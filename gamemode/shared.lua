@@ -9,5 +9,5 @@ include("sh_vectors.lua")
 include("sh_playermeta.lua")
 
 function GM:Initialize()
-    --For later
+
 end
