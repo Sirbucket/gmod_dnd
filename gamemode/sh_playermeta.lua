@@ -1,28 +1,23 @@
 local meta = FindMetaTable("player")
 
-local function IsHurt(player, override)
+function meta:IsHurt(override)
 	override = override or 1
-	return player:Health() < player:GetMaxHealth() * override
+	return self:Health() < self:GetMaxHealth() * override
 end
-meta.IsHurt = IsHurt
 
-local function IsArmorHurt(player, override)
+function meta:IsArmorHurt(override)
 	override = override or 1
-	return player:Armor() < player:GetMaxArmor() * override
+	return self:Armor() < self:GetMaxArmor() * override
 end
-meta.IsArmorHurt = IsArmorHurt
 
-local function HasArmor(player)
-	return player:Armor() > 0
+function meta:HasArmor()
+	return self:Armor() > 0
 end
-meta.HasArmor = HasArmor
 
-local function IsValidPlayer(player)
-	return player and player:IsValid() and player:IsPlayer()
+function meta:IsValidPlayer()
+	return self and self:IsValid() and self:IsPlayer()
 end
-meta.IsValidPlayer = IsValidPlayer
 
-local function IsLivingPlayer(player)
-	return player and PlayerMetaService.IsPlayer(player) and player:Alive()
+function meta:IsLivingPlayer()
+	return self and self:IsValidPlayer() and self:Alive()
 end
-meta.IsLivingPlayer = IsLivingPlayer
